@@ -12,7 +12,7 @@
 
 .TESTED ON
     Date(s) Tested  : 2025-01-19
-    Tested By       : Eric RUsso
+    Tested By       : Eric Russo
     Systems Tested  : Windows Server 2019 Datacenter, Build 1809
     PowerShell Ver. : 5.1.17763.6189
 
