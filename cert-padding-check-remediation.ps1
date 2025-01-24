@@ -1,3 +1,28 @@
+<#
+.SYNOPSIS
+    Adds and enables registry value EnableCertPaddingCheck outlined in CVE-2013-3900.
+    Please test thoroughly in a non-production environment before deploying widely.
+    Make sure to run as Administrator or with appropriate privileges.
+
+.NOTES
+    Author        : Eric Russo
+    Date Created  : 2025-01-22
+    Last Modified : 2024-01-22
+    Version       : 1.0
+
+.TESTED ON
+    Date(s) Tested  : 2025-01-22
+    Tested By       : Eric Russo
+    Systems Tested  : Windows Server 2019 Datacenter, Build 1809
+    PowerShell Ver. : 5.1.17763.6189
+    Wireshark Ver.  : 2.2.1 (v2.2.1-0-ga6fbd27 from master-2.2)
+
+.USAGE
+    Example syntax:
+    PS C:\> .\cert-padding-check-remediation.ps1 
+#>
+
+
 # Define the registry paths and value name
 $paths = @(
     "HKLM:\Software\Microsoft\Cryptography\Wintrust\Config",
