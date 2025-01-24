@@ -1,10 +1,10 @@
 <#
-.SYNOPSIS
+ .SYNOPSIS
     Adds and enables registry value EnableCertPaddingCheck outlined in CVE-2013-3900.
     Please test thoroughly in a non-production environment before deploying widely.
     Make sure to run as Administrator or with appropriate privileges.
 
-.NOTES
+ .NOTES
     Author        : Eric Russo
     Date Created  : 2025-01-22
     Last Modified : 2024-01-22
