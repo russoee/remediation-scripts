@@ -15,7 +15,6 @@
     Tested By       : Eric Russo
     Systems Tested  : Windows Server 2019 Datacenter, Build 1809
     PowerShell Ver. : 5.1.17763.6189
-    Wireshark Ver.  : 2.2.1 (v2.2.1-0-ga6fbd27 from master-2.2)
 
 .USAGE
     Example syntax:
