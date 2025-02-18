@@ -15,8 +15,8 @@
     STIG-ID         : WN10-CC-000326
 
 .TESTED ON
-    Date(s) Tested  : 
-    Tested By       : 
+    Date(s) Tested  : 2025-02-17
+    Tested By       : Eric Russo
     Systems Tested  : Windows 10 
     PowerShell Ver. : 5.1 (Compatible with native Windows PowerShell)
 
