@@ -14,10 +14,10 @@
     STIG-ID         : WN10-CC-000175
 
 .TESTED ON
-    Date(s) Tested  : 
-    Tested By       : 
-    Systems Tested  : 
-    PowerShell Ver. : 
+    Date(s) Tested  : 2025-02-18
+    Tested By       : Eric Russo
+    Systems Tested  : Windows 10 
+    PowerShell Ver. : 5.1 (Compatible with native Windows PowerShell)
 
 .USAGE
     Run as administrator:
