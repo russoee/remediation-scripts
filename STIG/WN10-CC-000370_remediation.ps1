@@ -23,7 +23,7 @@
     Run this script as an Administrator to disable the Convenience PIN login method.
     
     Example usage:
-    PS C:\> .\Disable_Convenience_PIN.ps1
+    PS C:\> .\WN10-CC-000370_remediation.ps1
     
     To verify compliance, run:
     PS C:\> Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "AllowDomainPINLogon"
