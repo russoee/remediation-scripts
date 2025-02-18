@@ -24,7 +24,7 @@
     Run this script as an Administrator to remediate WN10-AU-000500.
     
     Example usage:
-    PS C:\> .\Remediate_WN10-AU-000500.ps1
+    PS C:\> .\WN10-AU-000500_remediation.ps1
     
     To verify compliance, run:
     PS C:\> Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application" -Name MaxSize
