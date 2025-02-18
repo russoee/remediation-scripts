@@ -56,3 +56,4 @@ if ($CurrentValue -ne $RequiredValue -or $null -eq $CurrentValue) {
     Set-ItemProperty -Path $RegPath -Name $ValueName -Type DWord -Value $RequiredValue
 } else {
     Write-Host "PowerShell Script Block"
+    }
