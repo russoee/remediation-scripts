@@ -9,7 +9,7 @@
     GitHub          : github.com/russoee
     Date Created    : 2025-02-17
     Last Modified   : 2025-02-17
-    Version         : 1.2
+    Version         : 1.1
     CVEs            : N/A
     Plugin IDs      : N/A
     STIG-ID         : WN10-CC-000360
@@ -27,8 +27,7 @@
     PS C:\> .\WN10-CC-000360_remediation.ps1
     
     To verify compliance, run:
-    PS C:\> Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client" -Name "AllowBasic"
-    PS C:\> Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client" -Name "AllowDigest"
+    PS C:\> Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client"
 #>
 
 # Ensure script is running as Administrator
@@ -83,4 +82,3 @@ Write-Host "Current AllowBasic value: $UpdatedBasicValue (0 = Disabled)"
 Write-Host "Current AllowDigest value: $UpdatedDigestValue (1 = Enabled)"
 
 Write-Host "WN10-CC-000360 remediation complete."
-
