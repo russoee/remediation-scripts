@@ -17,7 +17,7 @@
 .TESTED ON
     Date(s) Tested  : 2025-05-01
     Tested By       : Eric Russo
-    Systems Tested  : Windows Server 2022
+    Systems Tested  : Windows Server 2019 Datacenter
     PowerShell Ver. : 5.1
 
 .USAGE
