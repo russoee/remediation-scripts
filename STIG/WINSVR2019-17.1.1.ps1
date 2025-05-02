@@ -31,4 +31,25 @@
 #>
 
 # Ensure script is running as Administrator
-if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal]()
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host "This script must be run as an Administrator. Exiting..." -ForegroundColor Red
+    exit 1
+}
+
+# Get current audit setting
+$CurrentSetting = (auditpol /get /subcategory:"Credential Validation") -join " "
+
+# Apply the audit policy if either Success or Failure is missing
+if ($CurrentSetting -notmatch "Success" -or $CurrentSetting -notmatch "Failure") {
+    Write-Host "Enabling 'Success' and 'Failure' auditing for Credential Validation..."
+    auditpol /set /subcategory:"Credential Validation" /success:enable /failure:enable | Out-Null
+} else {
+    Write-Host "'Success' and 'Failure' auditing for Credential Validation are already enabled."
+}
+
+# Confirm the setting
+Write-Host "`nCurrent Credential Validation audit policy:"
+auditpol /get /subcategory:"Credential Validation"
+
+Write-Host "`nSTIG 17.1.1 remediation complete."
+
