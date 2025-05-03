@@ -1,54 +1,35 @@
 <#
 .SYNOPSIS
-    This PowerShell script enables auditing for File Share access failures,
-    in compliance with DISA STIG ID 17.6.2 for Windows Server systems.
+    Enables auditing for File Share access (Success and Failure) under Object Access category,
+    in compliance with DISA STIG ID 17.6.2.
 
 .NOTES
-    Author          : Eric Russo  
-    LinkedIn        : linkedin.com/in/russo-eric/  
-    GitHub          : github.com/russoee  
-    Date Created    : 2025-05-01  
-    Last Modified   : 2025-05-01  
-    Version         : 1.0  
-    CVEs            : N/A  
-    Plugin IDs      : N/A  
-    STIG-ID         : 17.6.2
-
-.TESTED ON
-    Date(s) Tested  : 2025-05-01  
-    Tested By       : Eric Russo  
-    Systems Tested  : Windows Server 2019 Datacenter  
-    PowerShell Ver. : 5.1
-
-.USAGE
-    Run this script as Administrator to enable auditing for failed access to file shares.
-
-    Example:
-    PS C:\> .\17.6.2_AuditFileShare_Failure.ps1
-
-    To verify:
-    PS C:\> auditpol /get /subcategory:"File Share"
+    Author       : Eric Russo
+    STIG-ID      : 17.6.2
+    Date Created : 2025-05-02
+    OS Tested    : Windows Server 2019 Datacenter
 #>
 
-# Ensure script is running as Administrator
+# Ensure Admin
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Host "This script must be run as an Administrator. Exiting..." -ForegroundColor Red
+    Write-Host "Run this script as Administrator." -ForegroundColor Red
     exit 1
 }
 
-# Retrieve current audit setting
-$CurrentSetting = (auditpol /get /subcategory:"File Share") -join " "
+# Define path and value
+$regPath = "HKLM:\Software\Policies\Microsoft\Windows\Audit"
+$regName = "AuditObjectAccess"
+$requiredValue = 3  # 3 = Success and Failure
 
-# Apply the setting if 'Failure' is not enabled
-if ($CurrentSetting -notmatch "Failure") {
-    Write-Host "Enabling 'Failure' auditing for File Share access..."
-    auditpol /set /subcategory:"File Share" /failure:enable | Out-Null
-} else {
-    Write-Host "'Failure' auditing for File Share access is already enabled."
+# Create key if missing
+if (!(Test-Path $regPath)) {
+    New-Item -Path $regPath -Force | Out-Null
 }
 
-# Confirm the setting
-Write-Host "`nCurrent File Share audit policy:"
-auditpol /get /subcategory:"File Share"
+# Set policy value
+Set-ItemProperty -Path $regPath -Name $regName -Type DWord -Value $requiredValue
 
-Write-Host "`nSTIG 17.6.2 remediation complete."
+# Confirm
+$set = Get-ItemProperty -Path $regPath -Name $regName
+Write-Host "AuditObjectAccess set to: $($set.AuditObjectAccess)"
+Write-Host "Audit File Share (17.6.2) remediation complete."
