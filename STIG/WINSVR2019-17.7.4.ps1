@@ -1,7 +1,7 @@
 <#
 .SYNOPSIS
     This PowerShell script enables auditing for Windows Firewall rule-level policy changes,
-    including both Success and Failure, in compliance with DISA STIG ID 17.4.4.
+    including both Success and Failure, in compliance with DISA STIG ID 17.7.4.
 
 .NOTES
     Author          : Eric Russo
@@ -24,7 +24,7 @@
     Run this script as Administrator to enable auditing for Windows Firewall rule-level changes.
 
     Example:
-    PS C:\> .\17.4.4_AuditMPSSVC_PolicyChange.ps1
+    PS C:\> .\17.7.4_AuditMPSSVC_PolicyChange.ps1
 
     To verify:
     PS C:\> auditpol /get /subcategory:"MPSSVC Rule-Level Policy Change"
@@ -51,4 +51,4 @@ if ($CurrentSetting -notmatch "Success" -or $CurrentSetting -notmatch "Failure")
 Write-Host "`nCurrent audit policy for MPSSVC Rule-Level Policy Change:"
 auditpol /get /subcategory:"MPSSVC Rule-Level Policy Change"
 
-Write-Host "`nSTIG 17.4.4 remediation complete."
+Write-Host "`nSTIG 17.7.4 remediation complete."
