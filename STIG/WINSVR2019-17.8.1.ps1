@@ -24,7 +24,7 @@
     Run this script as Administrator to enable auditing for sensitive privilege usage events.
 
     Example:
-    PS C:\> .\17.8.1.1_AuditSensitivePrivilegeUse.ps1
+    PS C:\> .\17.8.1_AuditSensitivePrivilegeUse.ps1
 
     To verify:
     PS C:\> auditpol /get /subcategory:"Sensitive Privilege Use"
